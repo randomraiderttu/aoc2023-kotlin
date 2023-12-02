@@ -1,12 +1,10 @@
 class game(val red: Int = 0, val blue: Int = 0, val green: Int = 0)
 
-class cubeGame(gameID: Int, gameList: List<game>) {
-    val gameID = gameID
-    val gameList = gameList
+class cubeGame(val gameID: Int, val gameList: List<game>) {
 
-    var maxRed = 0
-    var maxBlue = 0
-    var maxGreen = 0
+    private var maxRed = 0
+    private var maxBlue = 0
+    private var maxGreen = 0
     var total = 0
     init {
         // figure out the max values across each game for a set of games
@@ -81,7 +79,7 @@ fun solvePart2(input: List<cubeGame>): Int {
 fun getGameID(gameIDString: String): Int = gameIDString.split(" ").get(1).toInt()
 
 fun loadGames(input: List<String>): List<cubeGame> {
-    var gameList = mutableListOf<cubeGame>()
+    val gameList = mutableListOf<cubeGame>()
 
     for (game in input) {
 //        println(game)
@@ -93,7 +91,7 @@ fun loadGames(input: List<String>): List<cubeGame> {
             games.add(tmpGame)
         }
 
-        var tmpGame = cubeGame(getGameID(tmp[0]),games)
+        val tmpGame = cubeGame(getGameID(tmp[0]),games)
         gameList.add(tmpGame)
     }
 
