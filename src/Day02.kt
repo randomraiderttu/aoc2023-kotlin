@@ -29,7 +29,6 @@ class cubeGame(gameID: Int, gameList: List<game>) {
     fun isValidGame(red: Int, blue: Int, green: Int): Boolean = (red >= maxRed && blue >= maxBlue && green >= maxGreen)
 }
 
-
 fun createGame(input: String): game {
     var red = 0
     var green = 0
@@ -52,6 +51,7 @@ fun createGame(input: String): game {
 
     return game(red, blue, green)
 }
+
 fun solvePart1(input: List<cubeGame>): Int {
     val red = 12
     val green = 13
@@ -80,14 +80,9 @@ fun solvePart2(input: List<cubeGame>): Int {
 
 fun getGameID(gameIDString: String): Int = gameIDString.split(" ").get(1).toInt()
 
-fun main() {
+fun loadGames(input: List<String>): List<cubeGame> {
     var gameList = mutableListOf<cubeGame>()
 
-//    val input = readInput("Day02_test")
-    val input = readInput("Day02_real")
-
-    // Load the list of games - the cubeGame class has all the individuals games and max values
-    // Should have put this in its own function to clean up main a bit...but...whatever
     for (game in input) {
 //        println(game)
         val tmp = game.split(":").toTypedArray()
@@ -101,6 +96,15 @@ fun main() {
         var tmpGame = cubeGame(getGameID(tmp[0]),games)
         gameList.add(tmpGame)
     }
+
+    return gameList
+}
+
+fun main() {
+//    val input = readInput("Day02_test")
+    val input = readInput("Day02_real")
+
+    val gameList = loadGames(input)
 
     val firstResult = solvePart1(gameList)
     val secondResult = solvePart2(gameList)
