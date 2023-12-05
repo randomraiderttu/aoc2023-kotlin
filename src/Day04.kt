@@ -3,6 +3,8 @@ data class gameCard
      val gameCard: List<String>,
      val gameCardMatchNum: Int,
      var gameCardInstances: Int = 1)
+
+// Kotlin doesn't have an exponent operator - so i stole this off the internet to handle power
 fun power(baseVal: Int, exponentVal: Int): Long {
     var exponent = exponentVal
     var result: Long = 1
@@ -13,9 +15,12 @@ fun power(baseVal: Int, exponentVal: Int): Long {
     }
     return result
 }
+
 fun solvePart1Day04(input: List<String>): Long {
     var total:Long = 0
 
+    // Fairly simple - split the input appropriately and find intersecting numbers
+    // The algorithm for points is 2^(number of matches - 1)
     for (game in input) {
         val gameCard = game.split(":")[1].trim()
         val winningNumList = gameCard.split("|")[0].trim().split("\\s+". toRegex())
@@ -45,6 +50,10 @@ fun solvePart2Day04(input: List<String>): Int {
     }
     val mapSize = gameMap.size
 
+    // Can't do a forEach on the map because I have to remove entries from the map and reinsert for a given key
+    // which will ruin the order of my map. So i'm looping over the number of entries in the map so I can freely
+    // change the ones i need to update their properties. I've got an explanation in comments below why you
+    // need to do that.
     for (x in 1..mapSize) {
         val currentCard = gameMap.getValue(x)
 
