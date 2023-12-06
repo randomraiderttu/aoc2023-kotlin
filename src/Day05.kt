@@ -57,47 +57,6 @@ fun solvePart1Day05(mappings: Mappings): Long {
     return lowest
 }
 
-//fun solvePart2Day05(mappings: Mappings): Long {
-//    var lowest: Long = 0
-//    var tmpLocation: Long = 0
-//    var isValSet = false
-//    var tmpseed = Seed(0)
-//    var numCheck: Long = 0
-//
-//    val seedListSize = mappings.seeds.size
-//
-//    for (x in 0..< seedListSize step 2) {
-//        val seedRange = mappings.seeds[x].seed + mappings.seeds[x + 1].seed
-//        for (i in mappings.seeds[x].seed..< seedRange) {
-//            numCheck += 1
-//            if (numCheck%100000000 == "0".toLong()) {
-//                numCheck = numCheck
-//            }
-//            tmpseed.seed = i
-//            tmpseed.soil = mappings.seedToSoil.getDestFromSource(tmpseed.seed)
-//            tmpseed.fertilizer = mappings.soilToFert.getDestFromSource(tmpseed.soil)
-//            tmpseed.water = mappings.fertToWater.getDestFromSource(tmpseed.fertilizer)
-//            tmpseed.light = mappings.waterToLight.getDestFromSource(tmpseed.water)
-//            tmpseed.temp = mappings.lightToTemp.getDestFromSource(tmpseed.light)
-//            tmpseed.humidity = mappings.tempToHumidity.getDestFromSource(tmpseed.temp)
-//            tmpLocation = mappings.humidityToLoc.getDestFromSource(tmpseed.humidity)
-//
-//            // find the lowest value
-//            if (!isValSet) {
-//                // Set the default value on first run no matter what it is
-//                lowest = tmpLocation
-//                isValSet = true
-//            } else {
-//                if (tmpLocation < lowest) {
-//                    lowest = tmpLocation
-//                }
-//            }
-//        }
-//    }
-//
-//    return lowest
-//}
-
 fun solvePart2Day05(mappings: Mappings): Long {
     var tmpSeedVal: Long
     val seedListSize = mappings.seeds.size
