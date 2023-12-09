@@ -1,3 +1,5 @@
+// Easiest to just build an override into this function - very simple logic change
+// from part 1 to part 2
 fun getSequence(input: List<Int>, isPart2: Boolean): Int {
     val tmpSequence = mutableListOf<Int>()
 
